@@ -2,23 +2,17 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) {
         try {
-            String inputFile = "input.txt";
-            String outputFile = "output.txt";
-            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedReader br = new BufferedReader(new FileReader("input.txt"));
             StringBuilder content = new StringBuilder();
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 content.append(line).append("\n");
             }
-            reader.close();
-
-            // Thay thế từ "Nha Trang" bằng từ "Vũng Tàu"
-            String replacedContent = content.toString().replaceAll("Nha Trang", "Vũng Tàu");
-
-            // Ghi nội dung đã thay thế vào tệp output.txt
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
-            writer.write(replacedContent);
-            writer.close();
+            br.close();
+            String replacedContent = content.toString().replaceAll("Nha Trang", "Vũng ");
+            BufferedWriter bw = new BufferedWriter(new FileWriter("output.txt"));
+            bw.write(replacedContent);
+            bw.close();
 
             System.out.println("Đã thay thế và ghi nội dung vào tệp output.txt thành công.");
         } catch (IOException e) {
